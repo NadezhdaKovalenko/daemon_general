@@ -212,13 +212,13 @@ int randFunction(int num)
 
 int randEntropy()
 {
-  int num = rand();
+  int num;
   int urandom = open("/dev/urandom", O_RDONLY);
 
   if(urandom == -1)
   {
     syslog(LOG_ERR, "Failed to open /dev/urandom. Error number is %d", errno);
-    exit(1);
+    num = rand();
   }
   else
   {
